@@ -1,9 +1,15 @@
-import './App.css';
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
+
+import Body from "./Components/Body";
 
 function App() {
+
   return (
-    <div className="m-3 p-3 text-3xl">
-      Project Netflix Clone helo
+    <div>
+      <Provider store={appStore}>
+        <Body/>
+      </Provider>
     </div>
   );
 }
