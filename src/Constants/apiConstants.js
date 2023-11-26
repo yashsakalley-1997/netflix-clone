@@ -6,5 +6,8 @@ export const apiOptions = {
     }
 };
 
-export const apiUrl = "https://api.themoviedb.org/3/movie/now_playing";
+export const apiUrl = "https://api.themoviedb.org/3/movie/upcoming";
+export const categoryApiUrl = "https://api.themoviedb.org/3/movie/"
 export const movieVideoUrl = (videoId)=>`https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`;
+export const posterUrl = "https://image.tmdb.org/t/p/w500";
+export const categories = ["now_playing","popular","top_rated","upcoming"];
