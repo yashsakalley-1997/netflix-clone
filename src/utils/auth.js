@@ -8,10 +8,10 @@ import
 import { auth } from "./fireBase";
 
 
-export const registerUser = async (email,password,name) =>{
+export const registerUser = async (name,email,password) =>{
     try{
         const userCredential = await createUserWithEmailAndPassword(auth,email,password);
-        await updateProfile(userCredential,{
+        await updateProfile(userCredential?.user,{
             displayName:name
         });
     }

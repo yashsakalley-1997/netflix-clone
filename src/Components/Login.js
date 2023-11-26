@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import validateInput from "../utils/validator";
 import { netflixBgImg } from "../Constants/images";
@@ -13,7 +12,6 @@ import { auth } from "../utils/fireBase";
 
 const Login  = () =>{
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [isSignInForm,toggleForm] = useState(true);
     const [error,setError] = useState("");
     const firstName = useRef(null);
@@ -35,14 +33,12 @@ const Login  = () =>{
                         email:email,
                         displayName:displayName
                     }))
-                    navigate("/browse")
                  }).catch((err)=>{
                     setError(err.code+" "+err.message)
                  })
             }
             else if(isSignInForm){
                 loginUser(userName.current.value,password.current.value).then((res)=>{
-                    navigate("/browse")
                 }).catch((err)=>{
                     setError(err.code+" "+err.message)
                 })
