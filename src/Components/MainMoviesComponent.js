@@ -1,14 +1,18 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
 import useFetchMovies from "../utils/useFetchMovies";
 
 import MovieTitle from "./MovieTitle";
 import MovieBackground from "./MovieBackground";
 import useFetchAllMovies from "../utils/useFetchAllMovies";
 
+import AppContext from "../utils/AppContext";
+
 const MainMoviesComponent = ()=>{
     useFetchMovies();
     useFetchAllMovies();
+    const {isGptSearch} = useContext(AppContext);
     const movies = useSelector((store)=>store?.movie?.movies);
     const randomIndex = useMemo(()=>{
         return Math.floor(Math.random()*20)

@@ -1,15 +1,19 @@
 import { useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { isEmpty } from "lodash";
 import { apiOptions, categoryApiUrl } from "../Constants/apiConstants";
-import { useDispatch } from "react-redux";
 
 import { categories } from "../Constants/apiConstants";
 import { setAllCategoryMovies } from "../store/moviesSlice";
 
 const useFetchAllMovies = () => {
     const dispatch = useDispatch();
+    const allCategoryMovies = useSelector((store)=>store?.movie?.allCategoryMovies)
     useEffect(()=>{
-        fetchData()
-    },[])
+        if(isEmpty(allCategoryMovies)){
+            fetchData()
+        }
+    },[allCategoryMovies])
 
     const fetchData = ()=>{
         categories.map(async (elem)=>{

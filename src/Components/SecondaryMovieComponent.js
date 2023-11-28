@@ -8,7 +8,7 @@ const SecondaryMoviesComponent = ()=>{
         <div className="bg-black">
             <div className="-mt-52 relative z-20">
                 {categories.map((elem)=>(
-                    allCategoryMovies[elem] && <MovieList category={elem.replace("_"," ")} movies={allCategoryMovies[elem]}/>
+                    allCategoryMovies[elem] && <MovieList key={elem} category={elem.replace("_"," ")} movies={allCategoryMovies[elem]}/>
                 ))}
             </div>
         </div>

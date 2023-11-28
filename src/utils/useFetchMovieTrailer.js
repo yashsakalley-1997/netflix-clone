@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 import { apiOptions,movieVideoUrl } from "../Constants/apiConstants";
 import { setMovieTrailer } from "../store/moviesSlice";
+import { isEmpty } from "lodash";
 
 const useFetchMovieTrailer = (movieId)=>{
     const dispatch = useDispatch();
+    const trailer = useSelector(store=>store?.movie?.movieTrailer);
     const fetchTrailer = async ()=>{
         const apiData = await fetch(movieVideoUrl(movieId),apiOptions);
         const jsonData = await apiData.json();
@@ -14,9 +16,10 @@ const useFetchMovieTrailer = (movieId)=>{
         dispatch(setMovieTrailer(trailerObject))
     }
 
-
     useEffect(()=>{
-        fetchTrailer()
+        if(isEmpty(trailer)){
+            fetchTrailer()
+        }
     },[])
 }
 

@@ -1,15 +1,23 @@
-import { Provider } from "react-redux";
-import appStore from "./store/appStore";
+import { useState } from "react";
 
+import { Provider } from "react-redux";
 import Body from "./Components/Body";
 
-function App() {
+import appStore from "./store/appStore";
+import AppContext from "./utils/AppContext";
 
+function App() {
+  const [gptSearchFlag,setFlag] = useState(false);
+  const setGptSearch = ()=>{
+    setFlag(!gptSearchFlag)
+  }
   return (
     <div>
-      <Provider store={appStore}>
-        <Body/>
-      </Provider>
+      <AppContext.Provider value={{isGptSearch:gptSearchFlag,setGptSearch:setGptSearch}}>
+        <Provider store={appStore}>
+          <Body/>
+        </Provider>  
+      </AppContext.Provider>
     </div>
   );
 }

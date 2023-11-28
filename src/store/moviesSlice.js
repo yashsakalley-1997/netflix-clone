@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     movies:[],
     allCategoryMovies:{},
-    movieTrailer:{}
+    movieTrailer:{},
+    gptMovieTitles:[],
+    gptRecommendedMovies:[]
 }
 
 const moviesSlice = createSlice({
@@ -21,8 +23,13 @@ const moviesSlice = createSlice({
         setMovieTrailer:(state,action)=>{
             state.movieTrailer = action.payload
         }
+        ,
+        setRecommendedMovies:(state,action)=>{
+            state.gptMovieTitles = action.payload.movieTitles
+            state.gptRecommendedMovies = action.payload.movies
+        }
     }
 })
 
-export const {setMovies,setMovieTrailer,setAllCategoryMovies} = moviesSlice.actions;
+export const {setMovies,setMovieTrailer,setAllCategoryMovies,setRecommendedMovies} = moviesSlice.actions;
 export default moviesSlice.reducer;

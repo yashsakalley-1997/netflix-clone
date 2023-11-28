@@ -45,6 +45,7 @@ const Login  = () =>{
             }
         }
     }
+    console.log("hello",process.env)
     return (
         <div>
             <Header/>            

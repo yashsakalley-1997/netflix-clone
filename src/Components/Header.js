@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,8 @@ import { logOut } from "../utils/auth";
 import { auth } from "../utils/fireBase";
 
 import { setLoggedUser,removedLoggedUser } from "../store/authSlice";
+
+import AppContext from "../utils/AppContext";
 const Header = () => {
     const dispatch = useDispatch();
     const user = useSelector((store)=>store?.auth?.user);
@@ -17,6 +19,8 @@ const Header = () => {
         logOut().then(()=>{
         })
     }
+    
+    const {isGptSearch,setGptSearch} = useContext(AppContext);
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(user)=>{
@@ -51,6 +55,13 @@ const Header = () => {
             {
                 user && (
                     <div className="p-4 flex gap-3">
+                        <button 
+                            onClick={()=>{
+                                setGptSearch()
+                            }}
+                            className="bg-[#10a37f] p-2 rounded-sm text-white">
+                            {isGptSearch?"Main Menu":"GPT Search"}
+                        </button>
                         <img 
                             className="w-10 rounded-sm"
                             src={netflixUserAvatar} alt="user-avatar"
