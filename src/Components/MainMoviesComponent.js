@@ -23,7 +23,7 @@ const MainMoviesComponent = ()=>{
     }
     const {original_title,overview,id} = movies[randomIndex];
     return (
-        <div>
+        <div className="pt-[30%] bg-black md:pt-0">
             <MovieTitle title={original_title} overview={overview}/>
             <MovieBackground id={id}/>
         </div>

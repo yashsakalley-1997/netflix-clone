@@ -24,12 +24,13 @@ const GptSearch = () => {
         <div>
             <div className="fixed -z-40">
                 <img
+                    className="h-screen w-screen object-cover"
                     src={netflixBgImg}
                     alt="Netflix background"
                 />    
             </div>
-            <div className="pt-[10%]">
-                <form className="w-1/2 bg-black p-4 grid grid-cols-12 m-auto gap-4" onSubmit={(e)=>e.preventDefault()}>
+            <div className="pt-[35%] md:pt-[10%]">
+                <form className="w-full md:w-1/2 bg-black p-4 grid grid-cols-12 m-auto gap-4" onSubmit={(e)=>e.preventDefault()}>
                     <input
                         type="text"
                         className="col-span-9 p-4 rounded-sm"
@@ -43,8 +44,8 @@ const GptSearch = () => {
                             Search
                     </button>    
                 </form>
+                <RecommendedMovies/>
             </div>
-            <RecommendedMovies/>
         </div>
     )
 }

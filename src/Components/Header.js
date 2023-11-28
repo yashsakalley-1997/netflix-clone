@@ -44,17 +44,19 @@ const Header = () => {
     },[dispatch,navigate])
 
     return (
-        <div className="flex justify-between z-10 absolute px-20 py-1 bg-gradient-to-b from-black w-full">
+        <div className="flex justify-between z-10 absolute px-20 py-1 bg-gradient-to-b from-black w-full
+        flex-col md:flex-row
+        ">
             <div>
                 <img 
-                    className="w-44"
+                    className="w-44 mx-auto md:mx-0"
                     src={netflixLogo}
                     alt="NetFlix Logo"
                 />
             </div>
             {
                 user && (
-                    <div className="p-4 flex gap-3">
+                    <div className="p-4 flex gap-3 mx-auto md:mx-0">
                         <button 
                             onClick={()=>{
                                 setGptSearch()
@@ -63,7 +65,7 @@ const Header = () => {
                             {isGptSearch?"Main Menu":"GPT Search"}
                         </button>
                         <img 
-                            className="w-10 rounded-sm"
+                            className="w-10 rounded-sm hidden md:inline-block"
                             src={netflixUserAvatar} alt="user-avatar"
                         />
                         <button onClick={logOutHandler} className="text-white font-semibold">Sign Out</button>
